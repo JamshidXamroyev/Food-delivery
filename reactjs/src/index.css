@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+::-webkit-scrollbar{
+    width: 3px;
+    height: 1px;
+}
+
+table, th, td{
+    text-align: left;
+    padding: 2px 13px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: #000000c2;
+}
+
+.fadeIn{
+    animation: Spin 1s;
+}
+
+@keyframes Spin {
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+.category::-webkit-scrollbar{
+    display: none;
+}
