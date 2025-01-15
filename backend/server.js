@@ -1,5 +1,6 @@
 const express = require("express")
 const cors = require("cors")
+const foodRoute = require("./routes/foodRoute")
 const mongoose = require("mongoose")
 require("dotenv").config()
 
@@ -7,6 +8,9 @@ require("dotenv").config()
 const app = express()
 const port = process.env.PORT || 4000
 
+// Endpoints
+app.use("/api/food", foodRoute)
+app.use("/images", express.static("uploads"))
 
 // Middleware
 app.use(express.json())
