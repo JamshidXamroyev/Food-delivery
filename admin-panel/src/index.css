@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&family=Outfit:wght@100..900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Outfit, sans-serif;
+}
+
+.active{
+    background-color: rgba(255, 166, 0, 0.17);
+    border: 1px solid tomato;
+    transform: translateX(-10px);
+}
+
+::-webkit-scrollbar{
+    width: 4px;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: black
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
