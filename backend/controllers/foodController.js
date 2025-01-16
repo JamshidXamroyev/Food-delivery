@@ -1,4 +1,5 @@
 const foodModel = require("../models/food")
+const fs = require("fs")
 
 class foodControllers {
     async addFood(req, res, next) {
