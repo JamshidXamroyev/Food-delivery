@@ -9,15 +9,16 @@ const userRoute = require("./routes/user.route");
 const app = express();
 const port = process.env.PORT || 4000;
 
-// Endpoints
-app.use(foodRoute);
-app.use(userRoute);
-app.use("/images", express.static("uploads"));
-
 // Middleware
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+// Endpoints
+app.use(userRoute);
+app.use(foodRoute);
+app.use("/images", express.static("uploads"));
+
 
 const startApp = async () => {
   try {

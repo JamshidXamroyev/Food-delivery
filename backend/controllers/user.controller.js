@@ -3,11 +3,10 @@ const validator = require("validator")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
+const generateToken = id => {
+    return jwt.sign({id}, process.env.JWT_SECRET)
+}
 class userController {
-    generateToken(id){
-        return jwt.sign({id}, process.env.JWT_SECRET)
-    }
-
     async Login(req, res, next){
         try {
             const {email, password} = req.body
@@ -15,24 +14,23 @@ class userController {
             // check user email exist
             const existUser = await userModel.findOne({email})
             if(!existUser){
-                res.json({ok: false, message: "Bu emailda foydalanuvchi topilmadi!"})
+                return res.json({ok: false, message: "Bu emailda foydalanuvchi topilmadi!"})
             }
             
             // Check password
             const checkPassword = await bcrypt.compare(password, existUser.password)
             if(!checkPassword){
-                res.json({ok: false, message: "Siz noto'g'ri parol kiritdingiz!"})
+                return res.json({ok: false, message: "Siz noto'g'ri parol kiritdingiz!"})
             }
 
-            const token = await this.generateToken(existUser._id)
+            const token = await generateToken(existUser._id)
 
-            res.json({ok: true, token})
+            return res.json({ok: true, message: "Siz tizimga kirdingiz!", token})
         } catch (error) {
-            res.json({error: error.message}).status(400)
+            res.json({ok: false, message: error.message}).status(400)
         }
     }
     async Register(req, res, next){
-            console.log(req.body);
         try {
             const {name, email, password} = req.body
             // exists user
@@ -55,11 +53,12 @@ class userController {
 
             // create new User and Token 
             const user = await userModel.create({name, email, password: hashPassword})
-            
-            const token = await this.generateToken(user._id)
-            res.json({ok: true, message: "Tabriklaymiz! Siz ro'yxatdan o'tdingiz!", token, user}).status(200)
+            const token = await generateToken(user._id)
+
+            // Send response
+            return res.json({ok: true, message: "Tabriklaymiz! Siz ro'yxatdan o'tdingiz!", token, user}).status(200)
         } catch (error) {
-            res.json({error: error.message}).status(400)
+            res.json({ok: false, message: error.message}).status(400)
         }
     }
 }

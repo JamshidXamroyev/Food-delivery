@@ -10,6 +10,7 @@ const Foods = ({category}) => {
                 <Cart item={item} category={category} index={index}/>
             ))}
         </div>
+        <p id="finish"></p>
     </section>
   )
 }

@@ -3,7 +3,7 @@ import { menu_list } from "../../assets/frontend_assets/assets"
 
 const Category = ({category, setCategory}) => {
   return (
-    <section className="w-full">
+    <section className="w-full" id="start">
       <h1 className="text-center lg:text-5xl md:text-4xl text-3xl font-bold my-3">Explore our menu</h1>
       <div className="flex overflow-x-scroll category items-center justify-between gap-12 my-12">
         {menu_list.map((item, index) => (

@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom"
+import { ToastContainer } from 'react-toastify';
 import Main from "./components/home/main"
 import Navbar from './pages/navbar'
 import Footer from './pages/footer'
@@ -11,6 +12,7 @@ const App = () => {
   const [open, setOpen] = useState(false)
   return (
     <>
+    <ToastContainer />
     <Login setOpen={setOpen} open={open}/>
       <div className="lg:w-[80%] md:w-[90%] w-[98%] mx-auto">
         <Navbar setOpen={setOpen}/>
