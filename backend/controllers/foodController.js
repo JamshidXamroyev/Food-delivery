@@ -2,7 +2,7 @@ const foodModel = require("../models/food")
 const fs = require("fs")
 
 class foodControllers {
-    async addFood(req, res) {
+    async addFood(req, res, next) {
         try {
             const {name, description, price, category} = req.body
             let image_file = `${req.file.filename}`
