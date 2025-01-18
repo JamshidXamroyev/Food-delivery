@@ -1,5 +1,6 @@
 import basket_icon from './basket_icon.png'
-import logo from './logo.png'
+import logo from './Fivora.Logo.png'
+import middleLogo from './FiverLogoLittle.png'
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
 import menu_1 from './menu_1.png'
@@ -61,6 +62,7 @@ import logout_icon from './logout_icon.png'
 import parcel_icon from './parcel_icon.png'
 
 export const assets = {
+    middleLogo,
     logo,
     basket_icon,
     header_img,
@@ -125,6 +127,7 @@ export const food_list = [
         description: "Food provides essential nutrients for overall health and well-being",
         category: "Salad"
     },
+    
     {
         _id: "2",
         name: "Veg salad",

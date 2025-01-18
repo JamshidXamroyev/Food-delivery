@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { food_list } from '../assets/frontend_assets/assets'
+import axios from 'axios'
 
 
 const initialState = {
   getProduct: JSON.parse(localStorage.getItem("product")) || {},
-  ammount: 0
+  ammount: 0,
+  food_list: []
 }
 
 export const counterSlice = createSlice({
@@ -27,21 +28,27 @@ export const counterSlice = createSlice({
       state.getProduct = {...state.getProduct, [_id]: state.getProduct[_id] - 1} 
       localStorage.setItem("product", JSON.stringify(state.getProduct))
     },
+
     getAllAmmount: (state) => {
       let ammount = 0
       for(const item in state.getProduct){
         if(state.getProduct[item] > 0){
-          let itemInfo = food_list.find((product) => product._id === item)
+          let itemInfo = state.food_list.find((product) => product._id === item)
           ammount += itemInfo.price * state.getProduct[item]
         }
       }
       
       state.ammount = ammount
+    },
+
+    addFood: (state, action) => {
+      const foods = action.payload
+      state.food_list = foods
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { removecart, addToCart, getAllAmmount } = counterSlice.actions
+export const { removecart, addToCart, getAllAmmount, addFood } = counterSlice.actions
 
 export default counterSlice.reducer

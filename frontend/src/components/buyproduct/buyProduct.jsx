@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
 import { removecart, getAllAmmount } from "../../reducers/food"
-import { food_list } from "../../assets/frontend_assets/assets"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 const BuyProduct = () => {
-  const {getProduct, ammount} = useSelector(state => state.food)
+  const {getProduct, ammount, food_list} = useSelector(state => state.food)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -30,7 +29,7 @@ const BuyProduct = () => {
                     return (
                         <tr key={index} className="border-t w-full">
                             <td className="w-1/6">
-                                <img src={item.image} alt={item.image} className="md:w-1/2 rounded-md"/>
+                                <img src={`/images/${item.image}`} alt={item.image} className="md:w-1/2 rounded-md"/>
                             </td>
                             <td className="md:w-1/6 w-full">{item.name}</td>
                             <td className="w-1/6">{item.price}$</td>

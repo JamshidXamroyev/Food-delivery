@@ -12,21 +12,20 @@ const Cart = ({item,category, index}) => {
     dispatch(getAllAmmount())
   }, [getProduct])
 
-
   if(category === "all"){
     return (
       <div className="flex flex-col items-center justify-start fadeIn" key={index}>
           <div className="max-md:w-full relative">
-              <img src={item.image} alt={item.name} className="rounded-t-2xl w-full"/>
+              <img src={`/images/${item.image}`} alt={item.name} className="rounded-t-2xl w-full"/>
               {getProduct[item._id] === undefined || getProduct[item._id] === 0 ? (
               <div className="absolute bottom-1 right-4 flex items-center gap-2">
                 <img src={assets.add_icon_white} alt={assets.add_icon_green} onClick={() => dispatch(addToCart(item._id))} className="w-[35px]"/>
               </div>
               ) : (
               <div className="absolute bottom-1 right-4 flex items-center gap-2">
-                <img src={assets.add_icon_green} alt={assets.add_icon_green} onClick={() => dispatch(addToCart(item._id))}/>
-                <p className="text-white font-semibold md:text-[20px]">{getProduct[item._id]}</p>
                 <img src={ assets.remove_icon_red} alt={ assets.remove_icon_red} onClick={() => dispatch(removecart(item._id))}/>
+                <p className="text-white font-semibold md:text-[20px]">{getProduct[item._id]}</p>
+                <img src={assets.add_icon_green} alt={assets.add_icon_green} onClick={() => dispatch(addToCart(item._id))}/>
               </div>
               )}
           </div>
@@ -44,16 +43,16 @@ const Cart = ({item,category, index}) => {
     return (
       <div className="flex flex-col items-center justify-start fadeIn" key={index}>
           <div className="max-md:w-full relative">
-              <img src={item.image} alt={item.name} className="rounded-t-2xl w-full"/>
+              <img src={`http://localhost:2008/images/${item.image}`} alt={item.name} className="rounded-t-2xl w-full"/>
               {getProduct[item._id] === undefined || getProduct[item._id] === 0 ? (
               <div className="absolute bottom-1 right-4 flex items-center gap-2">
                 <img src={assets.add_icon_white} alt={assets.add_icon_white} onClick={() => dispatch(addToCart(item._id))} className="w-[35px]"/>
               </div>
               ) : (
               <div className="absolute bottom-1 right-4 flex items-center gap-2">
-                <img src={assets.add_icon_green} alt={assets.add_icon_green} onClick={() => dispatch(addToCart(item._id))}/>
-                <p className="text-white font-semibold md:text-[20px]">{getProduct[item._id]}</p>
                 <img src={ assets.remove_icon_red} alt={ assets.remove_icon_red} onClick={() => dispatch(removecart(item._id))}/>
+                <p className="text-white font-semibold md:text-[20px]">{getProduct[item._id]}</p>
+                <img src={assets.add_icon_green} alt={assets.add_icon_green} onClick={() => dispatch(addToCart(item._id))}/>
               </div>
               )}
           </div>
